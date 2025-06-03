@@ -14,6 +14,8 @@ import torchvision
 import torchvision.transforms as transforms
 import torch.optim as optim
 import torch.nn.functional as F
+import gc
+from tqdm import tqdm
 
 class Bottleneck(nn.Module):
     expansion = 4
@@ -140,8 +142,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
 criterion = nn.CrossEntropyLoss()
 
-import gc
-from tqdm import tqdm
+
 num_epochs = 100
 best_acc = 0.0
 
