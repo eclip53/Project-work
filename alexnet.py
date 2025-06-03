@@ -14,6 +14,8 @@ import numpy as np
 import torch
 import torchvision
 import torchvision.transforms as transforms
+import gc
+from tqdm import tqdm
 
 class AlexNet(nn.Module):
     def __init__(self, num_class=10, dropout:float = 0.5 ):
@@ -98,8 +100,7 @@ classes = ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck'
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-import gc
-from tqdm import tqdm
+
 num_epochs = 200
 best_acc = 0.0
 
